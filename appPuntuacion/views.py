@@ -6,4 +6,10 @@ from json import dumps
 # Create your views here.
 
 def localidades(request):
-    return render(request, 'appPuntuacion/localidades.html')
+    Localidades=Localidad.objects.all()
+    nombre=[]
+    puntuacion=[]
+    for localidad in Localidades:
+        nombre.append(localidad.nombre)
+        puntuacion.append(localidad.puntuacion)
+    return render(request, 'appPuntuacion/localidades.html', {'Nombre':dumps(nombre), 'Puntuacion':dumps(puntuacion)})

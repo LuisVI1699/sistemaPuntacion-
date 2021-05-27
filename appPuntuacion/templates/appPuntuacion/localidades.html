@@ -3,8 +3,20 @@
 <script>
         
     var nombre = JSON.parse("{{Nombre|escapejs}}")
-    var puntaje = JSON.parse("{{Puntaje|escapejs}}")
-
+    var puntuacion = JSON.parse("{{Puntuacion|escapejs}}")
+    
+    for (var i in nombre)
+            {
+                    document.write(nombre[i] + "<br>")
+                
+            }
+    for (var i in nombre)
+    {
+            document.write(puntuacion[i] + "<br>")
+        
+    }
 
 </script>
 
+<h2 id="aqui"></h2>
+<h2 id="alla"></h2>
