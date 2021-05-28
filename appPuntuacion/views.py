@@ -14,17 +14,8 @@ def localidades(request):
     return render(request, 'appPuntuacion/localidades.html', {'Nombre':dumps(nombre), 'Puntuacion':dumps(puntuacion)})
 
 def localidadSelect(request):
-    Localidades=Localidad.objects.order_by('-puntuacion')
-    nombre=[]
-    puntuacion=[]
-    i=0
-
-    for localidad in Localidades:
-        nombre.append(localidad.nombre)
-        puntuacion.append(localidad.puntuacion)
-
-    while request.GET.get('localidad') != nombre[i]:
-        i += 1;
-    nombreLocalidad= nombre[i]
-    puntuacionLocalidad=puntuacion[i]
+    LocalidadSelect=request.GET.get('localidad')
+    local=Localidad.objects.get(nombre__icontains=LocalidadSelect)
+    nombreLocalidad= local.nombre
+    puntuacionLocalidad=local.puntuacion
     return render(request, 'appPuntuacion/localidadSelect.html', {'NombreLocalidad':nombreLocalidad, 'PuntuacionLocalidad':puntuacionLocalidad})

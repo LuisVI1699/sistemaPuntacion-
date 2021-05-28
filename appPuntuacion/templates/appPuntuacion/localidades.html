@@ -59,7 +59,8 @@
     for (var i in nombre) {
 
         const LOCACION = nombre[i];
-        $("#aqui").append(`<input type="submit" name="localidad" value="${LOCACION}"></input><br>` + "&nbsp");
+        const PUNT = puntuacion[i];
+        $("#aqui").append(`<input type="submit" name="localidad" value="${LOCACION}: ${PUNT} "></input><br>` + "&nbsp");
     }
     for (var i in nombre){
         document.write(nombre[i]);
