@@ -18,4 +18,4 @@ def localidadSelect(request):
     local=Localidad.objects.get(nombre__icontains=LocalidadSelect)
     nombreLocalidad= local.nombre
     puntuacionLocalidad=local.puntuacion
-    return render(request, 'appPuntuacion/localidadSelect.html', {'NombreLocalidad':nombreLocalidad, 'PuntuacionLocalidad':puntuacionLocalidad})
+    return render(request, 'appPuntuacion/localidadSelect.html', {'NombreLocalidad':nombreLocalidad, 'PuntuacionLocalidad':dumps(puntuacionLocalidad)})
