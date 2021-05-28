@@ -1,7 +1,7 @@
 {% load static %}
 <style>
     img {
-        max-width: 20%;
+        max-width: 10%;
         height: auto;
     }
     </style>
@@ -12,11 +12,18 @@
 
 <h2>{{ NombreLocalidad }}</h2>
 
+<h2>{{ MaxPuntuacion }}</h2>
+
 <h2>{{ PuntuacionLocalidad }}</h2><br>
 <div id="aqui"></dix>
+
 <script>
-    var puntaje= JSON.parse("{{PuntuacionLocalidad|escapejs}}")
-    for (let i=0; i<puntaje; i++)
+    var MaxPuntuacion = parseInt(JSON.parse("{{MaxPuntuacion|escapejs}}"))
+    var PuntuacionLocalidad=JSON.parse("{{PuntuacionLocalidad|escapejs}}")
+
+    var estrellas= Math.round((PuntuacionLocalidad*5)/MaxPuntuacion)
+
+    for (let i=0; i<estrellas; i++)
     {
         $("#aqui").append('<img src="{% static "appPuntuacion/star.png" %}">');
     }
