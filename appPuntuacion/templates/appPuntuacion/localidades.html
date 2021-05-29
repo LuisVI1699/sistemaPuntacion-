@@ -17,36 +17,54 @@
 
 <body>
 
-    <div class="container p-20 mb-20 bg-success py-1 text-white">
+    <div class="container-fluid p-20 mb-20 bg-primary py-1 text-white">
         <div class="row">
 
+            <div class="col-1 bg-primary">
+            </div>
+
+            <div class="col-2 bg-primary">
+
+                <div> <img src="static/appPuntuacion/IPN.png" width="200" height="241"></div>
+
+            </div>
 
 
-            <div class="col-12 bg-success">
+            <div class="col-6 bg-primary">
                 <h2 align="center">BIENVENIDO AL SISTEMA DE PUNTUACION POR LOCALIDAD</h2>
                 <br>
-                <h2>seleccione la opcion para conocer el puntaje asignado deacuerdo a la participacion de cada region registrada</h2>
+                <h2 align="center" class="text-dark">Seleccione la opcion para conocer el puntaje asignado deacuerdo a la participacion de cada region registrada</h2>
                 <br>
                 <br>
             </div>
-            <h3>Max Puntuacion: {{ MaxPuntuacion }}</h3>
 
+            <div class="col-2 bg-primary">
+                <div> <img src="static/appPuntuacion/ESIME.png" width="200" height="241"></div>
+            </div>
+
+            <div class="col-1 bg-primary">
+            </div>
 
         </div>
     </div>
 
-    <div class="container p-20 mb-20 bg-light py-1 text-black">
+    <!--- <h3>Max Puntuacion: {{ MaxPuntuacion }}</h3>-->
+
+    <div class="container p-20 mb-20 bg-light py-2 text-black">
         <div class="row">
             <form action="{% url 'LocalidadSelect' %}">
                 <br>
-                <h2 id="aqui"></h2>
+                <h2 id="aqui" align="center"></h2>
                 <br>
-                <h2 id="aca"></h2>
+                <h2 id="aca" align="center"></h2>
                 <br>
-                <h2 id="estado"></h2>
+                <h2 id="estado" align="center"></h2>
             </form>
         </div>
     </div>
+
+
+
 </body>
 
 
@@ -60,12 +78,12 @@
 
         const LOCACION = nombre[i];
         const PUNT = puntuacion[i];
-        $("#aqui").append(`<input type="submit" name="localidad" value="${LOCACION}">:${PUNT}</input><br>` + "&nbsp");
-    }
-    for (var i in nombre){
-        document.write(nombre[i]);
-    }
+        if (i % 8 == 0 && i > 0) {
+            $("#aqui").append(`<input class="btn btn-outline-success btn-lg" type="submit" name="localidad" value="${LOCACION}"></input><br>` + "&nbsp" + "<br>");
 
+        }
+        $("#aqui").append(`<input class="btn btn-outline-success btn-lg" type="submit" name="localidad" value="${LOCACION}"></input>` + "&nbsp");
+    }
 </script>
 
 
