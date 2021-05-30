@@ -67,35 +67,11 @@
     <BR>
     <BR>
 
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
+    <table class="table" id="all">
 
-                <th scope="col">
-                    <H1 align="center">LOCACION</H1>
-                </th>
-                <th scope="col">
-                    <H1 align="center">PUNTAJE</H1>
-                </th>
-                <th scope="col">
-                    <H1 align="center">ESTRELLAS</H1>
-                </th>
-            </tr>
-        </thead>
-        <tbody id="kks">
-            <tr>
-
-                <td id="lugar2" align="center"></td>
-                <td id="puntos2" align="center"></td>
-                <td>
-                    <div id="est2" align="center"></div>
-                </td>
-            </tr>
 
         </tbody>
     </table>
-
-
 
 </body>
 
@@ -113,26 +89,48 @@
         $("#aqui").append('<img src="{% static "appPuntuacion/star.png" %}">');
     }
 
+
     function mostrar() {
+        let st
+        st += `<thead class="thead-dark">`
+        st += `<tr>`
+        st += `<th scope="col">`
+        st += `<h1 align="center">LOCACION</h1>`
+        st += ` </th>`
+        st += `<th scope="col">`
+        st += `<h1 align="center">PUNTAJE</h1>`
+        st += `</th>`
+        st += `<th scope="col">`
+        st += `<h1 align="center">ESTRELLAS</h1>`
+        st += `</th>`
+        st += `</tr>`
+        st += `</thead>`
+        st += `<tbody>`
         for (var i in nombre) {
 
             const LOCACION = nombre[i];
             const PUNT = puntuacion[i];
             const star = Math.round((PUNT * 5) / MaxPuntuacion)
-
-            $("#lugar2").append(`<h1>${LOCACION}</h1>`);
-            $("#puntos2").append(`<h1>${PUNT}</h1>`);
+            st += `<tr>`
+            st += `<td align="center">${LOCACION}</td>`
+            st += `<td align="center">${PUNT}</td>`
+                //st += `<td align="center">3</td></tr>`
             ESTRELLAS(star)
         }
 
+        $("#all").append(`${st}`)
+
         function ESTRELLAS(star) {
-            let st = '<img src="{% static "appPuntuacion/star.png" %}" width="30" height="20">';
-            for (let i = 0; i < star; i++) {
+            //let st = '<img src="{% static "appPuntuacion/star.png" %}" width="30" height="20">';
+            st += `<td align="center">`
+            for (let j = 0; j < star; j++) {
                 st += '<img src="{% static "appPuntuacion/star.png" %}" width="30" height="20">';
+
                 //$("#est2").append('s')
                 //$("#est2").append('<img src="{% static "appPuntuacion/star.png" %}">');
             }
-            $("#est2").append(`<h1>${st}</h1>`)
+            st += `</td></tr>`
+
 
         }
 
