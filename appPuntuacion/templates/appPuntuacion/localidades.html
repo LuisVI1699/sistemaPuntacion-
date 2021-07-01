@@ -62,8 +62,16 @@
             </form>
         </div>
     </div>
+    <table class="table" id="all">
 
-
+    <thead class="thead-dark"><tr>
+    <th scope="col"><h1 align="center">LOCACION</h1></th>
+    <th scope="col"><h1 align="center">PUNTAJE</h1></th>
+    <th scope="col"><h1 align="center">ESTRELLAS</h1>
+    </th>
+    </tr>
+    </thead>
+    <tbody>
 
 </body>
 
@@ -79,10 +87,10 @@
         const LOCACION = nombre[i];
         const PUNT = puntuacion[i];
         if (i % 8 == 0 && i > 0) {
-            $("#aqui").append(`<input class="btn btn-outline-success btn-lg" type="submit" name="localidad" value="${LOCACION}"></input><br>` + "&nbsp" + "<br>");
+            $("#aqui").append(`<tr><td align="center"><input class="btn btn-outline-success btn-lg" type="submit" name="localidad" value="${LOCACION}"></input></td></tr>` + "&nbsp" );
 
         }
-        $("#aqui").append(`<input class="btn btn-outline-success btn-lg" type="submit" name="localidad" value="${LOCACION}"></input>` + "&nbsp");
+        $("#aqui").append(`<tr><td align="center"><input class="btn btn-outline-success btn-lg" type="submit" name="localidad" value="${LOCACION}"></input></td></tr></tbody>` + "&nbsp");
     }
 </script>
 
