@@ -20,5 +20,6 @@ from appPuntuacion import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.localidades, name='Localidades'),
-    path('localidad/', views.localidadSelect, name='LocalidadSelect')
+    path('localidad/<int:localidad_id>/', views.localidadSelect, name='LocalidadSelect')
+    #path('localidad/', views.localidadSelect, name='LocalidadSelect')
 ]

@@ -2,6 +2,13 @@
 <html lang="en">
 
 <head>
+    <style>
+        .links {
+            color: auto;
+            text-decoration: underline;
+            text-align: center;
+        }
+    </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -52,48 +59,40 @@
 
     <div class="container p-20 mb-20 bg-light py-2 text-black">
         <div class="row">
-            <form action="{% url 'LocalidadSelect' %}">
+            <form action="">
                 <br>
-                <h2 id="aqui" align="center"></h2>
+                <!--<h2 id="aqui" align="center"></h2>-->
                 <br>
-                <h2 id="aca" align="center"></h2>
-                <br>
-                <h2 id="estado" align="center"></h2>
             </form>
         </div>
     </div>
     <table class="table" id="all">
 
-    <thead class="thead-dark"><tr>
-    <th scope="col"><h1 align="center">LOCACION</h1></th>
-    <th scope="col"><h1 align="center">PUNTAJE</h1></th>
-    <th scope="col"><h1 align="center">ESTRELLAS</h1>
-    </th>
-    </tr>
-    </thead>
-    <tbody>
-
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">
+                    <h1 align="center">LOCACION</h1>
+                </th>
+                <th scope="col">
+                    <h1 align="center">DATOS</h1>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for TODO in todo %}
+            <tr>
+                <td align="center">
+                    <a class="links" href="{% url 'LocalidadSelect' TODO.id %}">{{TODO.nombre}}</a{{TODO.id}}</a>
+                </td>
+                <!-------------------------------------------------->
+                <td>
+                    <p align="center">DATOS</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
-
-
-
-<script>
-    var nombre = JSON.parse("{{Nombre|escapejs}}")
-    var puntuacion = JSON.parse("{{Puntuacion|escapejs}}")
-
-
-    for (var i in nombre) {
-
-        const LOCACION = nombre[i];
-        const PUNT = puntuacion[i];
-        if (i % 8 == 0 && i > 0) {
-            $("#aqui").append(`<tr><td align="center"><input class="btn btn-outline-success btn-lg" type="submit" name="localidad" value="${LOCACION}"></input></td></tr>` + "&nbsp" );
-
-        }
-        $("#aqui").append(`<tr><td align="center"><input class="btn btn-outline-success btn-lg" type="submit" name="localidad" value="${LOCACION}"></input></td></tr></tbody>` + "&nbsp");
-    }
-</script>
-
 
 
 <!-- Optional JavaScript; choose one of the two! -->
